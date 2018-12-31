@@ -8,6 +8,8 @@ public class BaseballPlayers {
 	private ArrayList<String> teamName;
 	private ArrayList<Integer> number;
 	private ArrayList<Integer> age;
+	private Team team;
+
 	private Scanner scanner;
 
 
@@ -19,9 +21,20 @@ public class BaseballPlayers {
 			scanner = new Scanner(System.in);
 			
 	}
+	
+	public void setTeam(Team team){
+		this.team = team;
+	}
 
 	public void addPlayer(String name, String teamName, int number, int age) {
 		
+		if(teamName == "Yankees"){
+		int yankeeRoster = 0;
+		yankeeRoster++;
+			if( yankeeRoster >2) {
+				team.checkTeamSize(yankeeRoster);
+			}
+		}
 		int i = 0;
 		
 			this.number.add(number);

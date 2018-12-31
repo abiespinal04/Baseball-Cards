@@ -38,16 +38,17 @@ public class BaseballCards extends JPanel {
 	private TextAreaOutputStream outputStream;
 	
 	private BaseballPlayers baseballPlayer;
-	private Team team;
+	public Team team;
 			
 
+		
 		public BaseballCards() {
 			
 			baseballPlayer = new BaseballPlayers();
 			baseballPlayer.checkNumber();
 			team = new Team();
 			team.addTeamPlayer(baseballPlayer);
-			
+			baseballPlayer.setTeam(team);
 			//EmptyBorders
 			border = new EmptyBorder(5, 6, 5, 20);
 			border1 = new EmptyBorder(5, 6, 5, 8);
@@ -87,6 +88,7 @@ public class BaseballCards extends JPanel {
 			addingPlayers.setLineWrap(true);
 			addingPlayers.setWrapStyleWord(true);
 			addingPlayers.setEditable(false);
+
 			
 			playersInfo = new JTextArea(10,21);
 			playersInfo.setLineWrap(true);
@@ -95,8 +97,6 @@ public class BaseballCards extends JPanel {
 
 			//Initializing TextAreaOutputStream
 			outputStream = new TextAreaOutputStream(addingPlayers, "Test");
-			//Initializing JScroll
-		
 		
 			//JLabels
 			playerName = new JLabel("Player's name: ");
@@ -138,7 +138,10 @@ public class BaseballCards extends JPanel {
 			printPlayers.setForeground(Color.WHITE);
 			printPlayers.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent ae) {
-					team.getTeamPlayers();
+					playersInfo.setText("");
+					playersInfo.repaint();
+					playersInfo.append(team.getTeamPlayers());
+					
 				}
 			});
 			
@@ -153,6 +156,7 @@ public class BaseballCards extends JPanel {
 					baseballPlayer.addPlayer(playerInput.getText(), teamInput.getText(),
 									Integer.parseInt(numberInput.getText()), 
 									Integer.parseInt(ageInput.getText()));
+					addingPlayers.append(team.playersCounter());
 					baseballPlayer.checkNumber();
 					playerInput.setText("");
 					teamInput.setText("");
