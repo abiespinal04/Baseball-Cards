@@ -67,6 +67,14 @@ public class BaseballPlayers {
 		}
 	}
 	
+	public ArrayList<Integer> cloneArray() {
+		
+		ArrayList<Integer> clone = this.number;
+		
+		return clone;
+		
+	}
+	
 	public String getName(int i) {
 		
 		return name.get(i);

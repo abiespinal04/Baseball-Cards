@@ -27,7 +27,7 @@ public class BaseballCards extends JPanel {
 	private final int HEIGHT = 400;
 	private final String TITLE = "Baseball Cards";
 	
-	private JButton printPlayers, insertPlayers,clear;
+	private JButton printPlayers, insertPlayers,clear,nodups, sortbyNum;
 	private JTextField playerInput,teamInput,ageInput,numberInput;
 	private JTextArea addingPlayers,playersInfo;
 	private JLabel playerName,teamName,age,number,empty,playersCounter, playersOutput;
@@ -189,6 +189,28 @@ public class BaseballCards extends JPanel {
 				}
 			});
 			
+			sortbyNum = new JButton("sortbyNum");
+			sortbyNum.setBorder(BorderFactory.createCompoundBorder(
+					BorderFactory.createLineBorder(Color.WHITE),BorderFactory.createEmptyBorder(5, 5, 10, 10)));
+			sortbyNum.setForeground(Color.WHITE);
+			sortbyNum.addActionListener(new ActionListener() {
+				//TODO separate logic from graphics
+				public void actionPerformed(ActionEvent ae) {
+					try {
+					
+						addingPlayers.setText(null);
+						playersInfo.setText(null);
+				}
+				catch(Exception E) {
+					
+					E.printStackTrace();
+					
+					
+				}
+				}
+			});
+			
+			//Adding JButtons to the frame
 			add(playerName);
 			playerName.setBorder(border1);
 			add(playerInput);
@@ -204,6 +226,7 @@ public class BaseballCards extends JPanel {
 			empty.setBorder(border4);
 			add(insertPlayers);
 			add(printPlayers);
+			add(sortbyNum);
 			add(clear);
 
 			
