@@ -31,7 +31,7 @@ public class BaseballPlayers {
 		if(teamName == "Yankees"){
 		int yankeeRoster = 0;
 		yankeeRoster++;
-			if( yankeeRoster >2) {
+			if( yankeeRoster > 2) {
 				team.checkTeamSize(yankeeRoster);
 			}
 		}

@@ -27,7 +27,7 @@ public class BaseballCards extends JPanel {
 	private final int HEIGHT = 400;
 	private final String TITLE = "Baseball Cards";
 	
-	private JButton printPlayers, insertPlayers;
+	private JButton printPlayers, insertPlayers,clear;
 	private JTextField playerInput,teamInput,ageInput,numberInput;
 	private JTextArea addingPlayers,playersInfo;
 	private JLabel playerName,teamName,age,number,empty,playersCounter, playersOutput;
@@ -95,9 +95,7 @@ public class BaseballCards extends JPanel {
 			playersInfo.setWrapStyleWord(true);
 			playersInfo.setEditable(false);
 
-			//Initializing TextAreaOutputStream
-			outputStream = new TextAreaOutputStream(addingPlayers, "Test");
-		
+			
 			//JLabels
 			playerName = new JLabel("Player's name: ");
 			playerName.setForeground(Color.WHITE);
@@ -139,9 +137,7 @@ public class BaseballCards extends JPanel {
 			printPlayers.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent ae) {
 					playersInfo.setText("");
-					playersInfo.repaint();
 					playersInfo.append(team.getTeamPlayers());
-					
 				}
 			});
 			
@@ -172,6 +168,26 @@ public class BaseballCards extends JPanel {
 				}
 			});
 			
+			clear = new JButton("Clear");
+			clear.setBorder(BorderFactory.createCompoundBorder(
+					BorderFactory.createLineBorder(Color.WHITE),BorderFactory.createEmptyBorder(5, 5, 10, 10)));
+			clear.setForeground(Color.WHITE);
+			clear.addActionListener(new ActionListener() {
+				//TODO separate logic from graphics
+				public void actionPerformed(ActionEvent ae) {
+					try {
+					
+						addingPlayers.setText(null);
+						playersInfo.setText(null);
+				}
+				catch(Exception E) {
+					
+					E.printStackTrace();
+					
+					
+				}
+				}
+			});
 			
 			add(playerName);
 			playerName.setBorder(border1);
@@ -188,6 +204,7 @@ public class BaseballCards extends JPanel {
 			empty.setBorder(border4);
 			add(insertPlayers);
 			add(printPlayers);
+			add(clear);
 
 			
 			jPanel2.add(playersCounter);
